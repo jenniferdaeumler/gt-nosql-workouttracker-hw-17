@@ -2,14 +2,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-// const Pizza = require("./models/pizzaModel");
-// const PizzaController = require("./controllers/pizzaController");
+// const routes = require("../routes");
 
 const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Static directory
 app.use(express.static("public"));
 
 mongoose.connect(
@@ -32,7 +32,9 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-// app.use(PizzaController);
+//Routes
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
