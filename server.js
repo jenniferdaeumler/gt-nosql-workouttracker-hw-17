@@ -2,7 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const route = require("./routes");
+// const routes = require("../routes");
 
 const PORT = process.env.PORT || 8080;
 
@@ -31,7 +31,8 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-// app.use(PizzaController);
+app.use(require("./routes/api-routes.js"));
+app.use(require("./routes/html-routes.js"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
