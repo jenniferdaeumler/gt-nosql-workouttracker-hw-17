@@ -1,19 +1,19 @@
-const router = require("express").Router();
+// const router = require("express").Router();
 // const Exercise = require("../models");
 // const Workout = require("../models");
 const db = require("../models");
 
 module.exports = function(app) {
 //Get route to get all the workouts ("/exercise?")
-    // app.get("/api/workout/", function(req, res) {
-    //     db.Post.findAll({})
-    //       .then(function(dbPost) {
-    //         res.json(dbPost);
-    //       });
-    //   });
+    app.get("/api/exercise", function(req, res) {
+        db.Workout.findAll({})
+          .then(function(dbWorkout) {
+            res.json(dbWorkout);
+          });
+      });
 
     //Post new workout 
-    router.post("/api/exercise", function(req, res) {
+    app.post("/api/exercise", function(req, res) {
         console.log(req.body);
         db.Exercise.create(req.body)
           .then(function(createdExercise) {
