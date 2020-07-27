@@ -27,8 +27,7 @@ module.exports = function (app) {
 
   //Post new workout
   app.post("/api/workouts", function (req, res) {
-    console.log(req.body);
-    db.Workout.create(req.body).then(function (createdWorkout) {
+    db.Workout.create({}).then(function (createdWorkout) {
       res.json({
         error: false,
         data: createdWorkout,
@@ -36,9 +35,23 @@ module.exports = function (app) {
       });
     });
   });
-};
 
-// /exercise will be post route
-// /exercise? get route from ID findOne
-// /stats get route
-// update --> edit previous workout routines
+
+app.put("/api/workouts/:id", function (req, res) {
+  db.Workout.findByIdAndUpdate(
+    //first arg is the ID, second is what you want to update
+    { _id: req.params.id },
+    { exercises: req.body }
+  )
+    .then(function (data) {
+      res.json(data);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
+
+
+
+};
