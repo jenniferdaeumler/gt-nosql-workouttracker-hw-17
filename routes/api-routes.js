@@ -15,7 +15,7 @@ module.exports = function (app) {
   //
 
   //Get route Peter suggested
-  app.get("/api/workout", function (req, res) {
+  app.get("/api/workouts", function (req, res) {
     db.Workout.find({})
       .then(function (dbWorkout) {
         res.json(dbWorkout);
@@ -26,7 +26,7 @@ module.exports = function (app) {
   });
 
   //Post new workout
-  app.post("/api/workout", function (req, res) {
+  app.post("/api/workouts", function (req, res) {
     console.log(req.body);
     db.Workout.create(req.body).then(function (createdWorkout) {
       res.json({
