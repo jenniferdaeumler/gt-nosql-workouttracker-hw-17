@@ -20,7 +20,7 @@ module.exports = function (app) {
 
   //Post new workout
   app.post("/api/workouts", function (req, res) {
-    db.Workout.create({}).then(function (createdWorkout) {
+    db.Workout.create(req.body).then(function (createdWorkout) {
       res.json({
         error: false,
         data: createdWorkout,
