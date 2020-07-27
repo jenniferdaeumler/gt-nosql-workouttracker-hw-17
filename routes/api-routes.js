@@ -4,18 +4,9 @@
 const db = require("../models");
 
 module.exports = function (app) {
-  //Get route to get all the workouts ("/exercise?")
-  // app.get("/api/exercise", function(req, res) {
-  //     db.Workout.findAll({})
-  //       .then(function(dbWorkout) {
-  //         res.json(dbWorkout);
-  //       });
-  //   });
-
-  //
 
   //Get route Peter suggested
-  app.get("/api/workout", function (req, res) {
+  app.get("/api/workouts", function (req, res) {
     db.Workout.find({})
       .then(function (dbWorkout) {
         res.json(dbWorkout);
@@ -25,9 +16,10 @@ module.exports = function (app) {
       });
   });
 
+
+
   //Post new workout
-  app.post("/api/workout", function (req, res) {
-    console.log(req.body);
+  app.post("/api/workouts", function (req, res) {
     db.Workout.create(req.body).then(function (createdWorkout) {
       res.json({
         error: false,
@@ -36,9 +28,35 @@ module.exports = function (app) {
       });
     });
   });
-};
 
-// /exercise will be post route
-// /exercise? get route from ID findOne
-// /stats get route
-// update --> edit previous workout routines
+
+
+  //Update the Last Workout card on root
+  app.put("/api/workouts/:id", function (req, res) {
+    db.Workout.findByIdAndUpdate(
+      //first arg is the ID, second is what you want to update
+      { _id: req.params.id },
+      { exercises: req.body }
+    )
+      .then(function (lastWorkoutInfo) {
+        res.json(lastWorkoutInfo);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+
+
+    //Stats page api-route
+    app.get("/api/workouts/range", function (req, res) {
+      db.Workout.find({})
+        .then(function (dbStats) {
+          res.json(dbStats);
+        })
+        .catch((error) => {
+          res.json(error);
+        });
+    });
+  });
+
+
+};
