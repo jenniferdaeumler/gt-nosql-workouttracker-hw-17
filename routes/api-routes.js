@@ -4,8 +4,7 @@
 const db = require("../models");
 
 module.exports = function (app) {
-
-  //Get route Peter suggested
+  //Get route to display workouts on root
   app.get("/api/workouts", function (req, res) {
     db.Workout.find({})
       .then(function (dbWorkout) {
@@ -16,27 +15,22 @@ module.exports = function (app) {
       });
   });
 
-
-
   //Post new workout
   app.post("/api/workouts", function (req, res) {
-    db.Workout.create(req.body).then(function (createdWorkout) {
-      res.json({
-        error: false,
-        data: createdWorkout,
-        message: "Succesfully created workout.",
-      });
+    db.Workout.create({}).then(function (createdWorkout) {
+      res.json(createdWorkout);
     });
   });
-
-
 
   //Update the Last Workout card on root
   app.put("/api/workouts/:id", function (req, res) {
     db.Workout.findByIdAndUpdate(
       //first arg is the ID, second is what you want to update
-      { _id: req.params.id },
-      { exercises: req.body }
+      req.params.id,
+      { $push: { exercises: req.body },
+      $inc: { totalDuration: req.body.duration },
+     },
+      { new: true }
     )
       .then(function (lastWorkoutInfo) {
         res.json(lastWorkoutInfo);
@@ -44,19 +38,16 @@ module.exports = function (app) {
       .catch(function (err) {
         res.json(err);
       });
-
-
-    //Stats page api-route
-    app.get("/api/workouts/range", function (req, res) {
-      db.Workout.find({})
-        .then(function (dbStats) {
-          res.json(dbStats);
-        })
-        .catch((error) => {
-          res.json(error);
-        });
-    });
   });
-
-
+  //Stats page api-route
+  app.get("/api/workouts/range", function (req, res) {
+    db.Workout.find({})
+      .limit(7)
+      .then(function (dbStats) {
+        res.json(dbStats);
+      })
+      .catch((error) => {
+        res.json(error);
+      });
+  });
 };
