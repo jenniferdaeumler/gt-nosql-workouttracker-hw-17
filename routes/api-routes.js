@@ -6,12 +6,8 @@ const db = require("../models");
 module.exports = function (app) {
   //Get route to display workouts on root
   app.get("/api/workouts", function (req, res) {
-    // find the workout with the latest date
     db.Workout.find({})
       .then(function (dbWorkout) {
-        // calculate total duration of all exercises
-        // const totalDuration = ...
-        // res.json {...dbWorkout, totalDuration}
         res.json(dbWorkout);
       })
       .catch((error) => {
