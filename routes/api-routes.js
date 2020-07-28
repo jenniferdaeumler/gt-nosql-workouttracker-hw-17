@@ -32,7 +32,7 @@ module.exports = function (app) {
       //first arg is the ID, second is what you want to update
       req.params.id,
       { $push: { exercises: req.body },
-      // $inc: { totalDuration: req.body.duration },
+      $inc: { totalDuration: req.body.duration },
      },
       { new: true }
     )
