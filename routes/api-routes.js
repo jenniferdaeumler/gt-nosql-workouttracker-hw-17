@@ -4,7 +4,7 @@
 const db = require("../models");
 
 module.exports = function (app) {
-  //Get route Peter suggested
+  //Get route to display workouts on root
   app.get("/api/workouts", function (req, res) {
     // find the workout with the latest date
     db.Workout.find({})
@@ -31,7 +31,9 @@ module.exports = function (app) {
     db.Workout.findByIdAndUpdate(
       //first arg is the ID, second is what you want to update
       req.params.id,
-      { $push: { exercises: req.body } },
+      { $push: { exercises: req.body },
+      // $inc: { totalDuration: req.body.duration },
+     },
       { new: true }
     )
       .then(function (lastWorkoutInfo) {
