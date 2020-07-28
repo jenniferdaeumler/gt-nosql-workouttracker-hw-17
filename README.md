@@ -2,50 +2,69 @@
 
 For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
 
-## User Story
-
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
-
-## Business Context
-
-A consumer will reach their fitness goals quicker when they track their workout progress.
 
 ## Acceptance Criteria
 
-When the user loads the page, they should be given the option to create a new workout, or continue with their last workout.
+[Link to Deployed Site](https://shielded-harbor-40100.herokuapp.com/)
+[Link to GitHub Repo](https://github.com/jenniferdaeumler/gt-nosql-workouttracker-hw-17)
 
-The user should be able to:
+## Description
 
-  * Add exercises to a previous workout plan.
+This application allows users to utilizes Mongo database with a Mongoose schema and handle routes with Express. Users can view current workouts, add new workouts, and complete workouts. Users can view stats of their workout routines with multiple graphs. They can also view the combined weight of multiple exercises on the `stats` page.
 
-  * Add new exercises to a new workout plan.
+## Table of Contents
 
-  * View multiple the combined weight of multiple exercises on the `stats` page.
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Credits](#credits)
+4. [MIT License](#mit-license)
+5. [Contributing](#contributing)
 
-## Commit Early and Often
+## Installation
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
+Click on the deployed site link to view on Heroku.
+OR
+Clone the repo, and run the server, and view in local.
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills
+## Usage
 
-2. Your commit history allows you to revert your code base in the event that you need to return to a previous state
+Open app via Heroku link. Click on new workout to create a new one. Click complete when complete. To continue the workout, click continue workout. Click on Dashboard to view your stats.
+OR, if running locally -->
+After installing the proper npm packages. Run "node server.js" in the terminal. Go to the local host in browser.
 
-Follow these guidelines for committing:
+![Homepage of App](assets/homepage.png)
 
-* Make single purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits
+![Add New Workout](assets/addworkout.png)
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history
+![Stats](assets/stats.png)
 
-* Don't commit half done work, for the sake of your collaborators (and your future self!)
+## Credits
 
-* Test your application before you commit to ensure functionality at every step in the development process
+Solo projected completed as homework for Georgia Tech Full-Stack Flex Program.
+Trilogy Education provided assets.
 
-We would like you to have well over 200 commits by graduation, so commit early and often!
+## MIT-License
 
-## Submission on BCS
+Copyright (c) [2020][jennifer daeumler]
 
-You are required to submit the following:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-* The URL to the deployed application
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-* The URL to the Github repository
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Contributing
+
+If you created an application or package and would like other developers to contribute it, you will want to add guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own.
